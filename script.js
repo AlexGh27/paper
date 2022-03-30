@@ -57,11 +57,7 @@ function playRound(playerSelection, computerSelection) {
     else if (p == 'SCISSORS' && c == 'SCISSORS') {
         result = 'Draw!';
     }
-
-
-    
-
-    
+    console.log(result); 
 }   
 
 
