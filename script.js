@@ -18,7 +18,7 @@ function computerPlay() {
 
 function playRound(playerSelection, computerSelection) {
      
-    playerSelection = prompt();
+    
     playerValue = playerSelection.toUpperCase();
 
     computerSelection = computerPlay();
@@ -80,28 +80,21 @@ function playRound(playerSelection, computerSelection) {
     return score; 
 }   
 
-function game() {
+const rock = document.querySelector('#button-rock');
+const paper = document.querySelector('#button-paper');
+const scissors = document.querySelector('#button-scissors');
 
-    let playerScore = 0;
-    let computerScore = 0;
+rock.addEventListener('click', function(e) {
+    playRound('rock');
+});
 
-    for(let i = 0; i < 5; i++) {
-        let score = playRound();
+paper.addEventListener('click', function(e) {
+    playRound('paper');
+});
 
-        if (score == 3) {
-            playerScore++;
-        }
-        if (score == 1) {
-            computerScore++;
-        }
-
-    }
-    console.log(`Final Score: You: ${playerScore} , Computer: ${computerScore}`);
-}
-
-
-
-
+scissors.addEventListener('click', function(e) {
+    playRound('scissors');
+});
 
     
 
