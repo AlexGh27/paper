@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    
 }
 
 body {
@@ -10,6 +11,12 @@ body {
     padding: 0px;
     margin: 0px;
     
+}
+#match-button {
+    height: 200px;
+    width: 200px;
+    margin-top: 150px;
+    font-size: 30px;
 }
 
 .button {
@@ -22,19 +29,37 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-top: 300px;
+    margin-top: 100px;
     width: 1200px;
 
 }
 
 #final {
-    margin-top: 100px;
+    margin-top: 20px;
     text-align: center;
     font-size: 30px;
+    width: 500px;
+    height: 100px;
 }
 
 #score {
-    width: 200px;
+    width: 100px;
     height: 100px;
-    margin-top: 50px;
+    margin-top: 10px;
+    
+    text-align: center;
+    padding-top: 30px;
+}
+
+.score-display {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+    font-size: 30px;
+    text-align: center;
+    padding-top: 30px;
+    
+    width: 1000px;
+    padding-left: 95px;
 }

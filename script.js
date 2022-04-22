@@ -15,100 +15,138 @@ function computerPlay() {
 }
 
 
-
-function playRound(playerSelection, computerSelection) {
-     
-    
-    playerValue = playerSelection.toUpperCase();
-
-    computerSelection = computerPlay();
-    computerValue = computerSelection.toUpperCase();
-
-    let p = playerValue;
-    let c = computerValue;
-    let result = '';
-    let change = 0;
-    
-
-    if (p == 'ROCK' && c == 'PAPER') {
-        result = 'You lose! Paper beats Rock';
-        change = 1;
-        final.textContent = result;
-    }
-    else if (p == 'ROCK' && c == 'SCISSORS') {
-        result = 'You Win! Rock beats Scissors';
-        change = 3;
-        final.textContent = result;
-    }
-    else if (p == 'ROCK' && c == 'ROCK') {
-        result = 'Draw!';
-        change = 2;
-        final.textContent = result;
-    }
-
-    else if (p == 'PAPER' && c == 'ROCK') {
-        result = 'You win! Paper beats Rock';
-        change = 3;
-        final.textContent = result;
-    }
-    else if (p == 'PAPER' && c == 'Scissors') {
-        result = 'You lose! Scissors beats Paper!';
-        change = 1;
-        final.textContent = result;
-    }
-    else if (p == 'PAPER' && c == 'PAPER') {
-        result = 'Draw!';
-        change = 2;
-        final.textContent = result;
-    }
-
-    else if (p == 'SCISSORS' && c == 'PAPER') {
-        result = 'You win! Scissors beats Paper';
-        change = 3;
-        final.textContent = result;
-    }
-    else if (p == 'SCISSORS' && c == 'ROCK') {
-        result = 'You lose! Rock beats Scissors';
-        change = 1;
-        final.textContent = result;
-    }
-    else if (p == 'SCISSORS' && c == 'SCISSORS') {
-        result = 'Draw!';
-        change = 2;
-        final.textContent = result;
-    }
-    return result; 
-}   
-
 const rock = document.querySelector('#button-rock');
 const paper = document.querySelector('#button-paper');
 const scissors = document.querySelector('#button-scissors');
 
-let final = document.querySelector('#final');
+
+rock.addEventListener('click', function(e) {
+    let playerSelection = 'rock';
+    gameScore(playRound(playerSelection));
+});
+
+paper.addEventListener('click', function(e) {  
+    let playerSelection = 'paper';
+    gameScore(playRound(playerSelection));
+});
+
+scissors.addEventListener('click', function(e) {   
+    let playerSelection = 'scissors';
+    gameScore(playRound(playerSelection));
+});
 
 
-
-let score = document.querySelector('score');
 
 let playerScore = 0;
 let computerScore = 0;
 
-while (playerScore < 5 && computerScore < 5) {
+let final = document.querySelector('#final');
+let score = document.querySelector('#score');
 
-    rock.addEventListener('click', function(e) {
-        playRound('rock');
-    });
-    
-    paper.addEventListener('click', function(e) {
-        playRound('paper');
-    });
-    
-    scissors.addEventListener('click', function(e) {
-        playRound('scissors');
-    });
+
+
+function playRound(playerSelection) {  
+        
+        let playerValue = playerSelection.toUpperCase();
+
+        let computerSelection = computerPlay();
+        let computerValue = computerSelection.toUpperCase();
+
+        let p = playerValue;
+        let c = computerValue;
+        let textDisplay = '';
+        let change = 0;
+
+
+        if (p == 'ROCK' && c == 'PAPER') {
+            textDisplay = 'You lose!';
+            result = 1;
+            final.textContent = textDisplay;
+            computerScore++;
+        }
+        else if (p == 'ROCK' && c == 'SCISSORS') {
+            textDisplay = 'You win!';
+            
+            final.textContent = textDisplay;
+            playerScore++;
+        }
+        else if (p == 'ROCK' && c == 'ROCK') {
+            textDisplay = 'Draw!';
+            
+            final.textContent = textDisplay;
+        }
+
+        else if (p == 'PAPER' && c == 'ROCK') {
+            textDisplay = 'You win!';
+            
+            final.textContent = textDisplay;
+            playerScore++;
+        }
+        else if (p == 'PAPER' && c == 'SCISSORS') {
+            textDisplay = 'You lose!';
+            
+            final.textContent = textDisplay;
+            computerScore++;
+        }
+        else if (p == 'PAPER' && c == 'PAPER') {
+            textDisplay = 'Draw!';
+            
+            final.textContent = textDisplay;
+        }
+
+        else if (p == 'SCISSORS' && c == 'PAPER') {
+            textDisplay = 'You win!';
+            
+            final.textContent = textDisplay;
+            playerScore++;
+        }
+        else if (p == 'SCISSORS' && c == 'ROCK') {
+            textDisplay = 'You lose!';
+            
+            final.textContent = textDisplay;
+            computerScore++;
+        }
+        else if (p == 'SCISSORS' && c == 'SCISSORS') {
+            textDisplay = 'Draw!';
+            
+            final.textContent = textDisplay;
+        }
+
+        
+    return 0; 
+}   
+
+function gameScore() {
+
+    score.textContent = playerScore + ' - ' + computerScore;
+
+    if (playerScore == 5) {
+        final.textContent = 'Congratulations! You won the game!';
+        playerScore = 0;
+        computerScore = 0;
+    }
+    else if (computerScore == 5) {
+        final.textContent = 'Game over! The computer won!';
+        playerScore = 0;
+        computerScore = 0;
+    }
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
