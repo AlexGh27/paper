@@ -60,61 +60,65 @@ function playRound(playerSelection) {
 
         if (p == 'ROCK' && c == 'PAPER') {
             textDisplay = 'You lose!';
-            result = 1;
             final.textContent = textDisplay;
             computerScore++;
         }
         else if (p == 'ROCK' && c == 'SCISSORS') {
             textDisplay = 'You win!';
-            
             final.textContent = textDisplay;
             playerScore++;
         }
         else if (p == 'ROCK' && c == 'ROCK') {
             textDisplay = 'Draw!';
-            
             final.textContent = textDisplay;
+            computerScore++;
+            playerScore++;
         }
 
         else if (p == 'PAPER' && c == 'ROCK') {
             textDisplay = 'You win!';
-            
             final.textContent = textDisplay;
             playerScore++;
         }
         else if (p == 'PAPER' && c == 'SCISSORS') {
             textDisplay = 'You lose!';
-            
             final.textContent = textDisplay;
             computerScore++;
         }
         else if (p == 'PAPER' && c == 'PAPER') {
             textDisplay = 'Draw!';
-            
             final.textContent = textDisplay;
+            computerScore++;
+            playerScore++;
         }
 
         else if (p == 'SCISSORS' && c == 'PAPER') {
             textDisplay = 'You win!';
-            
             final.textContent = textDisplay;
             playerScore++;
         }
         else if (p == 'SCISSORS' && c == 'ROCK') {
             textDisplay = 'You lose!';
-            
             final.textContent = textDisplay;
             computerScore++;
         }
         else if (p == 'SCISSORS' && c == 'SCISSORS') {
             textDisplay = 'Draw!';
-            
             final.textContent = textDisplay;
+            computerScore++;
+            playerScore++;
         }
 
         
     return 0; 
 }   
+
+function disableButtons() {
+    document.querySelector('#button-rock').disabled = true;
+    document.querySelector('#button-paper').disabled = true;
+    document.querySelector('#button-scissors').disabled = true;
+}
+
 
 function gameScore() {
 
@@ -122,17 +126,39 @@ function gameScore() {
 
     if (playerScore == 5) {
         final.textContent = 'Congratulations! You won the game!';
-        playerScore = 0;
-        computerScore = 0;
+        disableButtons();
+        
     }
     else if (computerScore == 5) {
         final.textContent = 'Game over! The computer won!';
-        playerScore = 0;
-        computerScore = 0;
+        disableButtons();
     }
 
+}
+
+let newMatch = document.querySelector('#match-button');
+
+newMatch.addEventListener('click', function(e) {
+    playNewMatch();
+})
+
+
+
+
+function playNewMatch() {
+    playerScore = 0;
+    computerScore = 0;
+    score.textContent = playerScore + ' - ' + computerScore;
+    document.querySelector('#button-rock').disabled = false;
+    document.querySelector('#button-paper').disabled = false;
+    document.querySelector('#button-scissors').disabled = false;
+    final.textContent = '';
 
 }
+
+
+
+
 
 
 
